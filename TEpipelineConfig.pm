@@ -20,9 +20,9 @@ use FindBin;
 require Exporter;
 
 @EXPORT_OK = qw( $SCRIPT_DIR $SCRIPT_LIB_DIR $SAMTOOLS
-    $TRIM_PROG $HISAT_PROG $hisat2_mm10 $hisat2_hg38 $hisat2_mm10L1 $TETRANS_PROG
+    $TRIM_PROG $STAR_PROG $star_mm10 $star_hg38 $star_mm10L1 $HISAT_PROG $hisat2_mm10 $hisat2_hg38 $hisat2_mm10L1 $TETRANS_PROG
     $tetrans_hg38_gene $tetrans_hg38_repeat $tetrans_mm10L1_gene $tetrans_mm10L1_repeat
-    $tetrans_mm10_gene $tetrans_mm10_repeat);
+    $tetrans_mm10_gene $tetrans_mm10_repeat $DEEP_PROG $genome_length_hg38 $genome_length_mm10);
 
 %EXPORT_TAGS = ( all => [ @EXPORT_OK ] );
 @ISA         = qw(Exporter);
@@ -54,6 +54,13 @@ BEGIN {
 ## samtools
   $SAMTOOLS = "/package/samtools-1.3.1/bin/samtools";
 
+## STAR
+## ======================
+  $STAR_PROG = "/package/STAR-2.5.2b/bin/STAR";
+  $star_hg38 = "/data/repository/organisms/GRCh38_ensembl/STARIndex";
+  $star_mm10 = "/data/repository/organisms/GRCm38_ensembl/STARIndex";
+  $star_mm10L1 = "/data/repository/organisms/GRCm38_ensembl/STARIndex";
+
 ## HISAT2
 ## ======================
 ##
@@ -73,5 +80,12 @@ BEGIN {
   $tetrans_mm10L1_gene = "/data/repository/organisms/GRCm38_ensembl/gencode/m9/genes.gtf";
   $tetrans_mm10L1_repeat = "/data/jenuwein/group/onishi/ref_seqs/mm10/tetranscript/mm10L1_rmsk_TE.nochr.gtf";
 }
+
+## deeptools
+## =======================
+##
+$DEEP_PROG = "/data/jenuwein/group/onishi/software/miniconda/bin/bamCoverage";  #version2.4 installed here
+$genome_length_hg38 = "2569321340";  #for hg38 unique regions via GEM mappability
+$genome_length_mm10 = "2207072725";  #for mm10 unique regions via GEM mappability
 
 1;
