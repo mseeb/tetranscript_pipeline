@@ -1,4 +1,4 @@
-TEtranscript_pipeline version 1.0
+TEtranscript_pipeline version 1.1
 module load samtools1.3.1
 module load R/3.2.3
 No fastq dir indicated
@@ -28,11 +28,14 @@ DESCRIPTION
         Trim fastq files
 
     -hisat2
-        Align fastq files
+        Align fastq files with hisat2
+
+    -star
+        Align fastq files with STAR
 
     -s(amples) [sample info file]
         File containing list of "treatment" and "control" samples. Necessary
-        for DESeq.
+        for DESeq. Turns on TEtranscript.
 
         Row1: Treatment1.bam Treatment2.bam (space in between)
 
@@ -42,6 +45,9 @@ DESCRIPTION
 
     -countsOnly
         Produce only counts table with TEtranscript. Do not run DESeq2.
+
+    -bigwigs
+        Create bigwigs from bamfiles.
 
 AUTHORS
     <onishi@ie-freiburg.mpg.de>
