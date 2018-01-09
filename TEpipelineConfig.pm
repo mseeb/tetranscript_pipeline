@@ -22,7 +22,7 @@ require Exporter;
 @EXPORT_OK = qw( $SCRIPT_DIR $SCRIPT_LIB_DIR $SAMTOOLS
     $TRIM_PROG $STAR_PROG $star_mm10 $star_hg38 $star_mm10L1 $HISAT_PROG $hisat2_mm10 $hisat2_hg38 $hisat2_mm10L1 $TETRANS_PROG
     $tetrans_hg38_gene $tetrans_hg38_repeat $tetrans_mm10L1_gene $tetrans_mm10L1_repeat
-    $tetrans_mm10_gene $tetrans_mm10_repeat $DEEP_PROG $genome_length_hg38 $genome_length_mm10);
+    $tetrans_mm10_gene $tetrans_mm10_repeat $DEEP_PROG $genome_length_hg38 $genome_length_mm10 $intron_hg38 $exon_hg38 $utr5_hg38 $utr3_hg38 $genic_hg38);
 
 %EXPORT_TAGS = ( all => [ @EXPORT_OK ] );
 @ISA         = qw(Exporter);
@@ -76,7 +76,7 @@ BEGIN {
   $tetrans_hg38_gene = "/data/repository/organisms/GRCh38_ensembl/gencode/release_24/genes.gtf";
   $tetrans_hg38_repeat = "/data/jenuwein/group/onishi/ref_seqs/hg38/tetranscript/hg38_rmsk_TE.nochr.gtf";
   $tetrans_mm10_gene = "/data/repository/organisms/GRCm38_ensembl/gencode/m9/genes.gtf";
-  $tetrans_mm10_repeat = "/data/jenuwein/group/onishi/ref_seqs/mm10/tetranscript/mm10_rmsk_TE.nochr.gtf.gz";
+  $tetrans_mm10_repeat = "/data/jenuwein/group/onishi/ref_seqs/mm10/tetranscript/mm10_rmsk_TE.nochr.gtf";
   $tetrans_mm10L1_gene = "/data/repository/organisms/GRCm38_ensembl/gencode/m9/genes.gtf";
   $tetrans_mm10L1_repeat = "/data/jenuwein/group/onishi/ref_seqs/mm10/tetranscript/mm10L1_rmsk_TE.nochr.gtf";
 }
@@ -88,4 +88,13 @@ $DEEP_PROG = "/data/jenuwein/group/onishi/software/miniconda/bin/bamCoverage";  
 $genome_length_hg38 = "2569321340";  #for hg38 unique regions via GEM mappability
 $genome_length_mm10 = "2207072725";  #for mm10 unique regions via GEM mappability
 
+## stats
+## ======================
+##
+
+$utr5_hg38 = "/data/jenuwein/group/onishi/ref_seqs/hg38/gencode/hg38.gencode.5UTR.bed";
+$utr3_hg38 = "/data/jenuwein/group/onishi/ref_seqs/hg38/gencode/hg38.gencode.3UTR.bed";
+$exon_hg38 = "/data/jenuwein/group/onishi/ref_seqs/hg38/gencode/hg38.gencode.exonplus10bp.bed";
+$intron_hg38 = "/data/jenuwein/group/onishi/ref_seqs/hg38/gencode/hg38.gencode.intron.bed";
+$genic_hg38 = "/data/jenuwein/group/onishi/ref_seqs/hg38/gencode/hg38.genic.bed"; 
 1;
